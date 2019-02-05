@@ -1,0 +1,41 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/scripts/jquery-1.10.2.js"></script>
+    <script src="~/scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/scripts/jquery.validate.js"></script>
+    @*<script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.js"></script>*@
+    
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/ErrorStyles.css" rel="stylesheet" />
+    
+    <title></title>
+</head>
+<body>
+    @Html.ActionLink("Signout", "SignOut", "Account")
+    <div>
+        @*<div id="divUserListContainer"> @Html.Action("DeleteAjax", "Admin"); </div>*@
+        @if (TempData["checkRole"] != null)
+        {
+            <div class="alert alert-danger">@TempData["checkRole"]</div>
+        }
+
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-success">@TempData["message"]</div>
+        }
+
+        @RenderBody()
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿@using ShoppingCart.WebUI.HtmlHelpers
+@model ShoppingCart.WebUI.Models.ProductsListViewModel
+
+@{
+    ViewBag.Title = "List Products";
+}
+
+<h2>List</h2>
+
+@*dung PartialView de co the dung nhieu noi
+noi dung chinh la phan o duoi*@
+@foreach (var p in Model.Products)
+{
+    @Html.Partial("ProductSummary", p)
+}
+
+@*phan nay duoc dung lam PartialView*@
+@*@foreach (var p in Model.Products)
+{
+    <div class="well">
+        <h3>
+            <strong>@p.Name</strong>
+            @* "c" la de hien thi phu thuoc vao setting cua web.config <system.web>
+                        <globalization culture="en-GB" uiCulture="en-GB" />.*@
+            @*<span class="pull-right label label-primary">@p.Price.ToString("c")</span>
+        </h3>
+        
+        <span class="lead"> @p.Description</span>
+    </div>
+}*@
+
+
+<div class="btn-group pull-right">
+    @*su dung Html Helper*@
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory }))
+</div>
